@@ -6,3 +6,4 @@ provision base: ## OPTIONS: target={webapp|yukizuri.moshimo.works}
 provision main: ## OPTIONS: target={webapp|yukizuri.moshimo.works}
 	bundle exec itamae ssh -h ${target} -u a-know recipes/main/tools.rb
 	bundle exec itamae ssh -h ${target} -u a-know recipes/main/dirs.rb
+	bundle exec itamae ssh -h ${target} -u a-know recipes/main/nginx.rb
