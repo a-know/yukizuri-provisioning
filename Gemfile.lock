@@ -9,6 +9,8 @@ GEM
       schash (~> 0.1.0)
       specinfra (>= 2.64.0, < 3.0.0)
       thor
+    itamae-secrets (0.2.3)
+      thor
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
@@ -27,6 +29,7 @@ PLATFORMS
 
 DEPENDENCIES
   itamae
+  itamae-secrets
 
 BUNDLED WITH
    1.16.0
