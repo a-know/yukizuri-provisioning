@@ -1,3 +1,6 @@
+require 'itamae/secrets'
+secrets = Itamae::Secrets(File.join(__dir__, '../../secret'))
+
 package 'nss'
 
 epel_repo = '/etc/yum.repos.d/epel.repo'
@@ -15,4 +18,12 @@ end
 package 'supervisor' do
   action :install
   options '--enablerepo=epel'
+end
+
+service 'supervisord'
+
+template '/etc/supervisord.conf' do
+  source "../../files/supervisor/supervisord.conf.erb"
+  variables(username: secrets[:supervisor_webuser], password: secrets[:supervisor_webpass])
+  notifies :start, "service[supervisord]"
 end
