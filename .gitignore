@@ -51,3 +51,6 @@ build-iPhoneSimulator/
 
 # personal credentials
 a-know.json
+
+# itamae-secrets
+/secret/keys/
