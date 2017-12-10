@@ -12,3 +12,14 @@ execute 'Install td-agent' do
 end
 
 service 'td-agent'
+
+%w(
+  fluent-plugin-slack
+  fluent-plugin-record-reformer
+  fluent-plugin-bigquery
+).each do |gem|
+  gem_package gem do
+    gem_binary '/opt/td-agent/embedded/bin/fluent-gem'
+    notifies :restart, 'service[td-agent]'
+  end
+end
