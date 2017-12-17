@@ -62,3 +62,11 @@ template '/etc/td-agent/conf.d/nginx-log.conf' do
   source "../../files/td-agent/nginx-log.conf.erb"
   notifies :restart, 'service[td-agent]'
 end
+
+remote_file '/etc/td-agent/conf.d/application-log.conf' do
+  owner    'root'
+  group    'root'
+  mode     '0644'
+  source "../../files/td-agent/application-log.conf"
+  notifies :restart, 'service[td-agent]'
+end
