@@ -1,3 +1,7 @@
+require 'itamae/secrets'
+secrets = Itamae::Secrets(File.join(__dir__, '../../secret'))
+
+## install and setup td-agent
 remote_file '/home/a-know/install-redhat-td-agent3.sh' do
   owner "root"
   group "root"
@@ -30,4 +34,31 @@ remote_file '/etc/td-agent/td-agent.conf' do
   mode '0755'
   source "../../files/td-agent/td-agent.conf"
   notifies :restart, "service[td-agent]"
+end
+
+## setup files for bigquery upload
+directory '/etc/td-agent/.keys'
+
+template '/etc/td-agent/.keys/bq-credential-for-fluentd-jsonkey.json' do
+  owner    'root'
+  group    'root'
+  mode     '0644'
+  source "../../files/td-agent/bq-credential-for-fluentd-jsonkey.json.erb"
+  variables(
+      private_key_id: secrets[:bq_creds_private_key_id],
+      private_key: secrets[:bq_creds_private_key],
+      client_email: secrets[:bq_creds_client_email],
+      client_id: secrets[:bq_creds_client_id],
+      client_x509_cert_url: secrets[:bq_creds_cert_url]
+  )
+end
+
+directory '/etc/td-agent/conf.d'
+
+template '/etc/td-agent/conf.d/nginx-log.conf' do
+  owner    'root'
+  group    'root'
+  mode     '0644'
+  source "../../files/td-agent/nginx-log.conf.erb"
+  notifies :restart, 'service[td-agent]'
 end
