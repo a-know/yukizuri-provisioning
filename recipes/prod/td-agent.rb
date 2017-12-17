@@ -23,3 +23,11 @@ service 'td-agent'
     notifies :restart, 'service[td-agent]'
   end
 end
+
+remote_file '/etc/td-agent/td-agent.conf' do
+  owner "root"
+  group "root"
+  mode '0755'
+  source "../../files/td-agent/td-agent.conf"
+  notifies :restart, "service[td-agent]"
+end
