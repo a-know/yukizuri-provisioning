@@ -7,6 +7,8 @@ end
 
 service 'nginx'
 
+directory '/var/www/yukizuri/.well-known'
+
 package 'nginx' do
     action :install
     options '--enablerepo=nginx'
@@ -31,4 +33,3 @@ end
 remote_file "/etc/logrotate.d/nginx" do
     source "../../files/logrotate/nginx"
 end
-  
