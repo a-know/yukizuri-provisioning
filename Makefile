@@ -15,3 +15,4 @@ provision main: ## OPTIONS: target={webapp|yukizuri.moshimo.works}
 
 provision prod: ## OPTIONS: target={webapp|yukizuri.moshimo.works}
 	bundle exec itamae ssh -h ${target} -u a-know recipes/prod/td-agent.rb
+	bundle exec itamae ssh -h ${target} -u a-know recipes/prod/mackerel.rb
