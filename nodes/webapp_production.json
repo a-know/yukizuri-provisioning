@@ -1,0 +1,6 @@
+{
+    "recipes": [
+      "./roles/base.rb",
+      "./roles/external-cooperation.rb"
+    ]
+  }
