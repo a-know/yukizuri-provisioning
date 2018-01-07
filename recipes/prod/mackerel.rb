@@ -31,6 +31,19 @@ template '/etc/mackerel-agent/mackerel-agent.conf' do
   notifies :restart, 'service[mackerel-agent]'
 end
 
+remote_file '/usr/lib/systemd/system/mackerel-agent.service' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  source "../../files/mackerel/mackerel-agent.service"
+  notifies :run, 'execute[run daemon-reload]'
+end
+
+execute 'run daemon-reload' do
+  command "sudo systemctl daemon-reload"
+  action :nothing
+end
+
 remote_file '/etc/mackerel-agent/conf.d/check-plugins.conf' do
   owner 'root'
   group 'root'
