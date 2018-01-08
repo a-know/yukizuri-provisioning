@@ -22,11 +22,12 @@ remote_file '/etc/nginx/nginx.conf' do
     notifies :restart, "service[nginx]"
 end
 
-remote_file '/etc/nginx/conf.d/default.conf' do
+template '/etc/nginx/conf.d/default.conf' do
     owner "root"
     group "root"
     mode '0644'
-    source "../../files/nginx/default.conf"
+    source "../../files/nginx/default.conf.erb"
+    variables(sub_domain: node['nginx']['sub_domain'], prepared_cert: node['nginx']['prepared_cert'])
     notifies :restart, "service[nginx]"
 end
 

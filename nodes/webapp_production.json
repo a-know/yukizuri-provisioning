@@ -1,4 +1,8 @@
 {
+    "nginx": {
+        "sub_domain": "yukizuri",
+        "prepared_cert": true
+    },
     "recipes": [
       "./roles/base.rb",
       "./roles/external-cooperation.rb"
