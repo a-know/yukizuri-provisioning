@@ -3,6 +3,14 @@
         "sub_domain": "yukizuri",
         "prepared_cert": true
     },
+    "td-agent": {
+        "nginx_log_conf": {
+            "dataset_name": "yukizuri_nginx_log"
+        },
+        "application_log_conf": {
+            "dataset_name": "yukizuri_application_log"
+        }
+    },
     "recipes": [
       "./roles/base.rb",
       "./roles/external-cooperation.rb"

@@ -27,7 +27,7 @@
   json_key /etc/td-agent/.keys/bq-credential-for-fluentd-jsonkey.json
 
   project yukizuri-189306
-  dataset yukizuri_nginx_log
+  dataset <%= @dataset_name %>
   auto_create_table true
   table nginx_access_log_%Y%m%d
 
