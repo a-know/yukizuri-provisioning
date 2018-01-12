@@ -1,5 +1,5 @@
 service "yum-cron" do 
-    action :disable
+    action :stop
 end
 
 remote_file '/etc/yum/yum-cron.conf' do
