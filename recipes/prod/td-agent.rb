@@ -60,13 +60,15 @@ template '/etc/td-agent/conf.d/nginx-log.conf' do
   group    'root'
   mode     '0644'
   source "../../files/td-agent/nginx-log.conf.erb"
+  variables dataset_name: node['td-agent']['nginx_log_conf']['dataset_name']
   notifies :restart, 'service[td-agent]'
 end
 
-remote_file '/etc/td-agent/conf.d/application-log.conf' do
+template '/etc/td-agent/conf.d/application-log.conf' do
   owner    'root'
   group    'root'
   mode     '0644'
-  source "../../files/td-agent/application-log.conf"
+  source "../../files/td-agent/application-log.conf.erb"
+  variables dataset_name: node['td-agent']['application_log_conf']['dataset_name']
   notifies :restart, 'service[td-agent]'
 end

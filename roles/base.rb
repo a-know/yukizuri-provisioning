@@ -1,0 +1,8 @@
+include_recipe '../recipes/main/selinux.rb'
+include_recipe '../recipes/main/timezone.rb'
+include_recipe '../recipes/main/tools.rb'
+include_recipe '../recipes/main/dirs.rb'
+include_recipe '../recipes/main/nginx.rb'
+include_recipe '../recipes/main/supervisor.rb'
+include_recipe '../recipes/main/logrotate.rb'
+include_recipe '../recipes/prod/certbot.rb'

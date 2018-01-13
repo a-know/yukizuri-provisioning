@@ -27,7 +27,7 @@ template '/etc/mackerel-agent/mackerel-agent.conf' do
   group 'root'
   mode '0644'
   source "../../files/mackerel/mackerel-agent.conf.erb"
-  variables apikey: secrets[:mackerel_api_key]
+  variables apikey: secrets[:mackerel_api_key], service_role: node['mackerel']['service_role']
   notifies :restart, 'service[mackerel-agent]'
 end
 
