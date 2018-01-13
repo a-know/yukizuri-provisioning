@@ -11,6 +11,9 @@
             "dataset_name": "yukizuri_application_log"
         }
     },
+    "mackerel": {
+        "service_role": "yukizuri:webapp"
+    },
     "recipes": [
       "./roles/base.rb",
       "./roles/external-cooperation.rb"
