@@ -1,0 +1,21 @@
+{
+    "nginx": {
+        "sub_domain": "yukizuri-stg",
+        "prepared_cert": true
+    },
+    "td-agent": {
+        "nginx_log_conf": {
+            "dataset_name": "yukizuri_stg_nginx_log"
+        },
+        "application_log_conf": {
+            "dataset_name": "yukizuri_stg_application_log"
+        }
+    },
+    "mackerel": {
+        "service_role": "yukizuri-stg:webapp"
+    },
+    "recipes": [
+      "./roles/base.rb",
+      "./roles/external-cooperation.rb"
+    ]
+  }
