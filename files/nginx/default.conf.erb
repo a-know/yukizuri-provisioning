@@ -1,17 +1,17 @@
 <% if @prepared_cert %>
 server {
     listen       80;
-    server_name  <%= @sub_domain %>.moshimo.works;
+    server_name  <%= @sub_domain %>.a-know.me;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen       443 ssl;
-    server_name  <%= @sub_domain %>.moshimo.works;
+    server_name  <%= @sub_domain %>.a-know.me;
     proxy_read_timeout 60m;
 
-    ssl_certificate /etc/letsencrypt/live/<%= @sub_domain %>.moshimo.works/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/<%= @sub_domain %>.moshimo.works/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/<%= @sub_domain %>.a-know.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/<%= @sub_domain %>.a-know.me/privkey.pem;
 
     ssl_session_cache   shared:SSL:3m;
     ssl_buffer_size     4k;
@@ -24,12 +24,12 @@ server {
     # OCSP stapling
     ssl_stapling on;
     ssl_stapling_verify on;
-    ssl_trusted_certificate /etc/letsencrypt/live/<%= @sub_domain %>.moshimo.works/fullchain.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/<%= @sub_domain %>.a-know.me/fullchain.pem;
     resolver 8.8.8.8 8.8.4.4 valid=300s;
 <% else %>
 server {
     listen       80;
-    server_name  <%= @sub_domain %>.moshimo.works;
+    server_name  <%= @sub_domain %>.a-know.me;
     proxy_read_timeout 60m;
 <% end %>
     access_log /var/log/nginx/yukizuri.access.log ltsv;
