@@ -2,16 +2,18 @@ require 'itamae/secrets'
 secrets = Itamae::Secrets(File.join(__dir__, '../../secret'))
 
 ## install and setup td-agent
-remote_file '/home/a-know/install-redhat-td-agent3.sh' do
-  owner "root"
-  group "root"
-  mode '0755'
-  source "../../files/td-agent/install-redhat-td-agent3.sh"
-end
+# remote_file '/home/a-know/install-redhat-td-agent3.sh' do
+#   owner "root"
+#   group "root"
+#   mode '0755'
+#   source "../../files/td-agent/install-redhat-td-agent3.sh"
+# end
+#
+# deprecated?
 
 execute 'Install td-agent' do
-  # See http://docs.fluentd.org/articles/install-by-rpm
-  command 'sh /home/a-know/install-redhat-td-agent3.sh'
+  # See https://docs.fluentd.org/installation/install-by-rpm#amazon-linux
+  command 'curl -L https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh | sh'
   not_if 'rpm -q td-agent'
 end
 

@@ -1,6 +1,6 @@
 {
     "nginx": {
-        "sub_domain": "yukizuri",
+        "sub_domain": "mstdn6",
         "prepared_cert": true
     },
     "td-agent": {
