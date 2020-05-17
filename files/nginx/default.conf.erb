@@ -8,7 +8,7 @@ server {
 server {
     listen       443 ssl;
     server_name  <%= @sub_domain %>.a-know.me;
-    proxy_read_timeout 60m;
+    proxy_read_timeout 4000m;
 
     ssl_certificate /etc/letsencrypt/live/<%= @sub_domain %>.a-know.me/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/<%= @sub_domain %>.a-know.me/privkey.pem;
